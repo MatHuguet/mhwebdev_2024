@@ -1,0 +1,106 @@
+.curiculum {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 0 1rem 2rem 1rem;
+  gap: 1rem;
+}
+
+.cv, .skills, .tools {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: solid 3px var(--clr-dark);
+  width: 100%;
+  height: auto;
+  padding: 1rem 3rem 1rem 3rem;
+}
+
+.cv h2, .skills h2, .tools h2 {
+  text-decoration: underline;
+  text-decoration-color: orange;
+}
+
+.curiculum > div > h2 {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.cv-item-date {
+  padding: 1rem 0 0.4rem 0;
+  font-style: italic;
+  color: darkorange;
+}
+
+.cv > ul {
+  padding: 0;
+}
+
+.cv > ul > li {
+  text-align: left;
+  text-decoration: none;
+  padding: 0.2rem 0;
+}
+
+.cv-item-title {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--clr-dark);
+}
+
+@media screen and (min-width: 300px) {
+  .cv-download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0 1rem 0;
+    text-align: left;
+  }
+  .cv-download p {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .cv-download p:last-child {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 500px) {
+  .cv-download {
+    padding: 0 4rem 0 4rem;
+  }
+}
+@media screen and (min-width: 850px) {
+  .curiculum {
+    flex-direction: row;
+  }
+  .cv, .skills, .tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: solid 3px var(--clr-dark);
+    width: 33%;
+    height: auto;
+    padding: 1rem 3rem 1rem 3rem;
+  }
+  .cv-download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    padding: 2rem 0 0 0;
+    text-align: left;
+  }
+  .cv-download p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    text-align: left;
+  }
+}/*# sourceMappingURL=cv.css.map */

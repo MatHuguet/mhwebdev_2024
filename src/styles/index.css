@@ -1,0 +1,29 @@
+@import '/src/styles/partials_styles/navbar.css';
+@import '/src/styles/pages_styles/signin.css';
+@import '/src/styles/partials_styles/buttons.css';
+@import '/src/styles/pages_styles/home.css';
+@import '/src/styles/pages_styles/cv.css';
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,900&display=swap");
+* {
+  margin: 0;
+  box-sizing: border-box;
+  --ft-title: "Merriweather", sans-serif;
+  --ft-global: "Josefin Sans", sans-serif;
+  --clr-dark: #474747;
+}
+
+h1 {
+  font-family: var(--ft-global);
+}
+
+h2, h3 {
+  font-family: var(--ft-title);
+}
+
+p, li, label {
+  font-family: var(--ft-global);
+}
+
+a, a:active, a:visited {
+  text-decoration: none;
+}
