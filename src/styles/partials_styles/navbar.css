@@ -4,6 +4,11 @@ header {
   background-color: var(--clr-dark);
 }
 
+.icons {
+  display: flex;
+  gap: 2rem;
+}
+
 @media screen and (min-width: 300px) {
   .navbar {
     display: flex;
@@ -84,6 +89,21 @@ header {
     justify-content: center;
     align-items: center;
   }
+
+  .social {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social>.icons {
+    position: absolute;
+    z-index: 40;
+    text-align: center;
+    top: 10.5rem;
+  } 
+
   img.profile {
     position: absolute;
     z-index: 40;
@@ -164,7 +184,12 @@ header {
     border: solid 10px white;
     top: 3rem;
   }
+
+  .social>.icons {
+    top: 12rem;
+  } 
 }
+
 @media screen and (min-width: 980px) {
   .navbar {
     display: flex;
@@ -231,7 +256,17 @@ header {
     border: solid 10px white;
     top: 5rem;
   }
+
+  .social>.icons {
+    top: 17rem;
+  } 
+
+  .icon-img>img {
+    width: 25px;
+    height: 25px;
+  }
+
   .hamburger-container {
     display: none;
   }
-}/*# sourceMappingURL=navbar.css.map */
+}

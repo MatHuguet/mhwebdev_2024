@@ -103,6 +103,11 @@ main {
   }
 }
 @media screen and (min-width: 600px) and (max-width: 900px) {
+
+  .introduction {
+    margin-top: 2rem;
+  }
+
   .description {
     padding: 0 1.2rem 2rem 1.2rem;
     display: flex;
@@ -112,5 +117,13 @@ main {
   .description p {
     font-size: 1.2rem;
     width: 75%;
+  }
+
+
+}
+
+@media screen and (min-width: 901px) {
+  .introduction {
+    margin-top: 10rem;
   }
 }
