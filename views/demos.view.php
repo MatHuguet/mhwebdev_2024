@@ -50,7 +50,8 @@ Demo interactive avec connexion et sorte de livre d'or
     </main>
 -->
     <div class="test">
-        <a href="https://www.figma.com/proto/Osct6kXpSNmfd6eooSGK7e/Sterne%26Mousse---refonte?page-id=98%3A7193&type=design&node-id=98-7194&viewport=213%2C380%2C0.26&t=T9qjF4owdSYQHT9o-1&scaling=min-zoom&starting-point-node-id=98%3A7194&mode=design">Voir
+        <a href="https://www.figma.com/proto/Osct6kXpSNmfd6eooSGK7e/Sterne%26Mousse---refonte?page-id=98%3A7193&type=design&node-id=98-7194&viewport=213%2C380%2C0.26&t=T9qjF4owdSYQHT9o-1&scaling=min-zoom&starting-point-node-id=98%3A7194&mode=design"
+            target="_blank">Voir
             le prototype</a>
 
     </div>

@@ -12,13 +12,14 @@ $routes = [
 
 ];
 
-function toController($uri, $routes):void {
+function toController($uri, $routes): void
+{
     // condition to display the pages according to the URI
-    if(array_key_exists($uri, $routes)) {
+    if (array_key_exists($uri, $routes)) {
         require $routes[$uri];
     } else {
         // calling abort function to redirect to 404 page or other
-    abort();
+        abort();
     }
 }
 
