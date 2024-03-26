@@ -19,6 +19,7 @@ class DatabaseInit
             }
         } catch (PDOException $e) {
             var_dump($e->errorInfo);
+            die();
         }
     }
 

@@ -1,11 +1,14 @@
 <?php
 
 
-function ddump($var): void
+function ddump($var, $die = false): void
 {
     echo '<pre>';
     var_dump($var);
     echo '</pre>';
+    if ($die) {
+        die();
+    }
 }
 
 function abort($code = 404): void

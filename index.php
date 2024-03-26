@@ -13,6 +13,7 @@ $init_rows_sql = $init_queries['sql_rows'];
 require 'src/classes/DatabaseInit.php';
 require 'src/classes/Database.php';
 require 'src/classes/Router.php';
+require 'src/classes/Users.php';
 
 $conf = $init['dev'];
 $sgbd = $init['dev_sgbd'];
@@ -23,7 +24,8 @@ $dsn = new Database($conf, $admin);
 // create app tables if not exists
 $dbinit = new DatabaseInit();
 
-//$dbinit->initTables($dsn, $init_tables_sql, $init_rows_sql);
+$dbinit->initTables($dsn, $init_tables_sql, $init_rows_sql);
+
 
 // instanciate router object
 $router = new Router($routes['uri'], $routes);

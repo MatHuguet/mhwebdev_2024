@@ -10,7 +10,6 @@ class Database
 
         $dsn = http_build_query(data: $config, arg_separator: ";");
 
-        ddump($user);
         try {
             $this->connect = new PDO('mysql:' . $dsn, $user['user'], $user['pass'], [
 

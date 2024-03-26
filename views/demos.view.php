@@ -1,3 +1,12 @@
+<?php
+global $dsn;
+$user = new Users($dsn);
+
+$datas = $user->getUser('hello@mail.fr');
+ddump($datas);
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,7 +22,13 @@
     partial("navbar");
     ?>
 
-
+    <div class="demos-menu-container">
+        <ul class="demos-navlist">
+            <li class="demos-nav-item">Démo</li>
+            <li class="demos-nav-item">Design</li>
+            <li class="demos-nav-item">Code</li>
+        </ul>
+    </div>
     <!-- DEMOS 
 
 Ajouter des projets
@@ -29,7 +44,7 @@ Projet responsive
 Demo interactive avec connexion et sorte de livre d'or
 
 -->
-    <h1>Design et maquettage</h1>
+
 
 
     <!--
@@ -49,9 +64,19 @@ Demo interactive avec connexion et sorte de livre d'or
         </section>
     </main>
 -->
+
+    <div class="user-connect-container">
+
+        <li><a href="/login">Se Connecter</a></li>
+        <li><a href="/signin">S'inscrire</a></li>
+        <!-- if connected
+        <li><a href="dashboard.php" class="btn">Dashboard</a></li>
+-->
+    </div>
+
+
     <div class="test">
-        <a href="https://www.figma.com/proto/Osct6kXpSNmfd6eooSGK7e/Sterne%26Mousse---refonte?page-id=98%3A7193&type=design&node-id=98-7194&viewport=213%2C380%2C0.26&t=T9qjF4owdSYQHT9o-1&scaling=min-zoom&starting-point-node-id=98%3A7194&mode=design"
-            target="_blank">Voir
+        <a href="https://www.figma.com/proto/Osct6kXpSNmfd6eooSGK7e/Sterne%26Mousse---refonte?page-id=98%3A7193&type=design&node-id=98-7194&viewport=213%2C380%2C0.26&t=T9qjF4owdSYQHT9o-1&scaling=min-zoom&starting-point-node-id=98%3A7194&mode=design" target="_blank">Voir
             le prototype</a>
 
     </div>
