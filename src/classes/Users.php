@@ -55,7 +55,7 @@ class Users
         ]);
     }
 
-    public function getUserInputs()
+    public function getUserInputs(): array
     {
         $userDatas = [
             'id'        => $this->user_id,

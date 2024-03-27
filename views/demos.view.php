@@ -2,8 +2,6 @@
 global $dsn;
 $user = new Users($dsn);
 
-$datas = $user->getUser('hello@mail.fr');
-ddump($datas);
 
 ?>
 

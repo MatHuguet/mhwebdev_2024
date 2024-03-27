@@ -2,7 +2,6 @@
 
 class Colors
 {
-    private int $palette_id;
     private string $main_color;
     private string $second_color;
     private string $brand;
@@ -13,6 +12,8 @@ class Colors
     private string $poignee;
     private string $name_font_color;
     private string $welcome_font_color;
+    private string $menu_titles_colors;
+    private string $menu_texts_colors;
 
     private $dsn;
 
@@ -21,7 +22,7 @@ class Colors
         $this->dsn = $dsn;
     }
 
-    public function setColors(string $main_color, string $second_color, string $brand, string $moulures, string $borders_moulures, string $door, string $door_second_color, string $poignee, string $name_font_color, string $welcome_font_color): void
+    public function setColors(string $main_color, string $second_color, string $brand, string $moulures, string $borders_moulures, string $door, string $door_second_color, string $poignee, string $name_font_color, string $welcome_font_color, $menu_titles_colors, $menu_texts_colors): void
     {
         $this->main_color           = $main_color;
         $this->second_color         = $second_color;
@@ -33,11 +34,13 @@ class Colors
         $this->poignee              = $poignee;
         $this->name_font_color      = $name_font_color;
         $this->welcome_font_color   = $welcome_font_color;
+        $this->menu_titles_colors   = $menu_titles_colors;
+        $this->menu_texts_colors   = $menu_texts_colors;
     }
 
     public function registerColors(array $colorsDatas): void
     {
-        $query = "INSERT INTO restaurants_colors(main_color, second_color, brand_color, moulures_color, borders_moulures_color, door_color, door_second_color, poignee_color, name_font_color, welcome_text_color) VALUES (
+        $query = "INSERT INTO restaurants_colors(main_color, second_color, brand_color, moulures_color, borders_moulures_color, door_color, door_second_color, poignee_color, name_font_color, welcome_text_color, menu_titles_colors, menu_texts_colors) VALUES (
             :maincolor,
             :secondcolor,
             :brand,
@@ -48,6 +51,8 @@ class Colors
             :poignee,
             :namefontcolor,
             :welcomefontcolor,
+            :menutitlescolors,
+            :menutextscolors,
         )";
         $conn = $this->dsn;
         $conn->query($query, [
@@ -61,6 +66,8 @@ class Colors
             'poignee'           => $colorsDatas['poignee'],
             'namefontcolor'     => $colorsDatas['nameFontColor'],
             'welcomefontcolor'  => $colorsDatas['welcomeFontColor'],
+            'menutitlescolors'  => $colorsDatas['menuTitlesColors'],
+            'menutextscolors'   => $colorsDatas['menuTextsColors'],
         ]);
     }
 
@@ -77,21 +84,16 @@ class Colors
             'poignee'           => $this->poignee,
             'nameFontColor'     => $this->name_font_color,
             'welcomeTextColor'  => $this->welcome_font_color,
+            'menuTitlesColors'  => $this->menu_titles_colors,
+            'menuTextsColors'   => $this->menu_texts_colors,
         ];
         return $colorsDatas;
     }
 
-    public function getUser($colorsId): array
+    public function getColors($colorsId): array
     {
         $query = "SELECT * FROM restaurants_colors WHERE restaurant_palette_id = :restaurantColors";
         $conn = $this->dsn;
         return $conn->query($query, ['restaurantColors' => $colorsId]);
-    }
-
-    public function getAllUsers(): array
-    {
-        $query = "SELECT * FROM restaurants_colors";
-        $conn = $this->dsn;
-        return $conn->query($query);
     }
 }

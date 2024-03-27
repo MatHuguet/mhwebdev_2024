@@ -15,8 +15,10 @@ return [
 
     'menus'   => "CREATE TABLE if not exists `menus` (
             `menu_id` INT PRIMARY KEY,
-            `titles_colors` VARCHAR(7),
-            `texts_colors` VARCHAR(7)
+            `brand_font` VARCHAR(100) NOT NULL,
+            `titles_font` VARCHAR(100) NOT NULL,
+            `texts_font` VARCHAR(100) NOT NULL
+
 
 )",
 
@@ -62,7 +64,9 @@ return [
             `door_second_color` VARCHAR(7) NOT NULL,
             `poignee_color` VARCHAR(7) NOT NULL,
             `name_font_color` VARCHAR(7) NOT NULL,
-            `welcome_text_color` VARCHAR(7) NOT NULL
+            `welcome_text_color` VARCHAR(7) NOT NULL,
+            `menu_titles_colors` VARCHAR(7) NOT NULL,
+            `menu_texts_colors` VARCHAR(7) NOT NULL
 )",
 
     'users_restaurants' => "CREATE TABLE if not exists `users_restaurants` (
