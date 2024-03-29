@@ -1,22 +1,25 @@
 <?php
+global $dsn;
+$user = new Users($dsn);
 
 $message = '';
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
+
+if (isset($_POST['email']) && isset($_POST['password']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['username' => $username]);
-    $user = $stmt->fetch();
+    $userRecords = $user->getUser(null, $email);
 
-    if ($user && password_verify($password, $user['password'])) {
+
+    if ($email === $userRecords[0]['user_email'] && password_verify($password, $userRecords[0]['user_password'])) {
+        $id = $userRecords[0]['user_id'];
         session_start();
-        $_SESSION['user_id'] = $user['id'];
-        header('Location: dashboard.php');
+        $_SESSION['user_id'] = $id;
+        $_SESSION['user']    = $userRecords[0]['user_firstname']  . ' ' . $userRecords[0]['user_lastname'];
+        header("Location: /demos/compte");
     } else {
-        $message = 'Mauvais identifiants';
+        $message = 'Identifiants ou mot de passe incorrecte ';
     }
 }
 ?>
@@ -27,14 +30,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/styles/index.css">
+    <link rel="stylesheet" href="/src/styles/index.css">
+    <link rel="stylesheet" href="/src/styles/pages_styles/user-pages.css">
+    <link rel="stylesheet" href="/src/styles/partials_styles/demo-navbar.css">
     <title>Connexion - Mathieu Huguet - Développeur Web</title>
 </head>
 
 <body>
 
     <?php
-    include 'partials/_navbar.php';
+    include 'partials/demo-navbar.php';
     ?>
 
     <div class="login-container">
@@ -44,19 +49,28 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             <p style="color:red"><?= $message ?></p>
         <?php endif; ?>
 
-        <form action="login.php" method="post">
-            <div>
-                <label for="username">Nom d'utilisateur:</label>
-                <input type="text" id="username" name="username">
+        <form class="signin-login-form" action="" method="post">
+
+            <div class="input-container">
+                <label for="email">Email :</label>
+                <input type="text" id="email" name="email">
             </div>
 
-            <div>
-                <label for="password">Mot de passe:</label>
+
+            <div class="input-container">
+                <label for="password">Mot de passe :</label>
                 <input type="password" id="password" name="password">
             </div>
+            <div class="infos">
+                <p class="p-info">Vous n'avez pas de compte ? <a class="redirect" href="/demos/signin">Créer un
+                        compte</a>
+                </p>
+                <p class="p-info">Mot de passe oublié ? <a class="redirect" href="/demos/login">Récupérer votre mot de
+                        passe</a></p>
+                <div class="submit-container">
+                    <input class="btn submit-btn" type="submit" value="Se connecter">
+                </div>
 
-            <div>
-                <input type="submit" value="Se connecter">
             </div>
         </form>
     </div>

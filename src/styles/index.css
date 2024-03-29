@@ -3,6 +3,7 @@
 @import '/src/styles/partials_styles/buttons.css';
 @import '/src/styles/pages_styles/home.css';
 @import '/src/styles/pages_styles/cv.css';
+@import '/src/styles/pages_styles/demos.css';
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,900&display=swap");
 * {
   margin: 0;

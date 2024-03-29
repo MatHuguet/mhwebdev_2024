@@ -4,7 +4,7 @@ return [
   'sql_tables' => [
     'users'     => "CREATE TABLE if not exists `users` (
             `user_id` VARCHAR(255) PRIMARY KEY,
-            `user_email` VARCHAR(255) NOT NULL,
+            `user_email` VARCHAR(255) NOT NULL UNIQUE,
             `user_password` VARCHAR(255) NOT NULL,
             `user_firstname` VARCHAR(255),
             `user_lastname` VARCHAR(255),
@@ -14,7 +14,7 @@ return [
           )",
 
     'menus'   => "CREATE TABLE if not exists `menus` (
-            `menu_id` INT PRIMARY KEY,
+            `menu_id` INT PRIMARY KEY AUTO_INCREMENT,
             `brand_font` VARCHAR(100) NOT NULL,
             `titles_font` VARCHAR(100) NOT NULL,
             `texts_font` VARCHAR(100) NOT NULL
@@ -23,7 +23,7 @@ return [
 )",
 
     'entrees'   => "CREATE TABLE if not exists `entrees` (
-            `entree_id` INT PRIMARY KEY,
+            `entree_id` INT PRIMARY KEY AUTO_INCREMENT,
             `menu_id` INT,
             `entree_name` VARCHAR(255) NOT NULL,
             `entree_desc` TEXT NOT NULL,
@@ -31,7 +31,7 @@ return [
           )",
 
     'plats'     => "CREATE TABLE if not exists `plats` (
-            `plat_id` INT PRIMARY KEY,
+            `plat_id` INT PRIMARY KEY AUTO_INCREMENT,
             `menu_id` INT,
             `plat_name` VARCHAR(255) NOT NULL,
             `plat_desc` TEXT NOT NULL,
@@ -39,7 +39,7 @@ return [
           )",
 
     'desserts'    => "CREATE TABLE if not exists `desserts` (
-            `dessert_id` INT PRIMARY KEY,
+            `dessert_id` INT PRIMARY KEY AUTO_INCREMENT,
             `menu_id` INT,
             `dessert_name` VARCHAR(255) NOT NULL,
             `dessert_desc` TEXT NOT NULL,
@@ -54,7 +54,7 @@ return [
           )",
 
     'restaurants_colors'    => "CREATE TABLE if not exists `restaurants_colors` (
-            `restaurant_palette_id` INT PRIMARY KEY,
+            `restaurant_palette_id` INT PRIMARY KEY AUTO_INCREMENT,
             `main_color` VARCHAR(7) NOT NULL,
             `second_color` VARCHAR(7) NOT NULL,
             `brand_color` VARCHAR(7) NOT NULL,

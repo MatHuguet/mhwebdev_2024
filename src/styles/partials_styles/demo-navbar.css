@@ -1,0 +1,41 @@
+.user-connect-container {
+    width: 100%;
+    position: sticky;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    background-color: white;
+    margin: 0;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    box-shadow: 2px 2px 2px rgb(177, 177, 177);
+}
+
+.demos-connect {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    padding-right: 2rem;
+}
+
+.demos-navlist {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style-type: none;
+    padding-left: 2rem;
+}
+
+.user-nav-item > a, .demos-nav-item > a {
+    color: black;
+}
+
+.user-nav-item > a:hover, .demos-nav-item > a:hover {
+    text-decoration: underline;    
+}
+
+.user-nav-item, .demos-nav-item {
+    padding: 0 1rem;
+}

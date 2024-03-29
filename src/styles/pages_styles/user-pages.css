@@ -1,0 +1,101 @@
+.login-container, .signin-container {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+    
+}
+
+label {
+    margin: 0;
+}
+
+.signin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.redirect {
+    color: orange;
+    text-decoration: none;
+}
+.redirect:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.pseudo-input {
+    visibility: hidden;
+}
+
+.pseudo-input-display {
+    visibility: visible;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+
+
+/* 
+PAGE UTILISATEUR
+*/
+
+@media screen and (min-width: 900px) {
+    .userpage {
+        margin: 2rem 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dashboard-container {
+        width: 50%;
+        p.p-title {
+            padding: 2rem 0;
+            text-wrap: wrap;
+            font-size: 1.2rem;
+        }
+
+        p {
+            text-wrap: wrap;
+        }
+
+        ul {
+            padding: 2rem 2rem;
+        }
+
+        ul > li {
+            padding: .8rem 0;
+        }
+    }
+}
+
+
+

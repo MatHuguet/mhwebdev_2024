@@ -31,3 +31,12 @@ function partial($partialToInclude): void
 function linkActiv($uri)
 {
 }
+
+function newalert($message): void
+{
+
+    echo "<script type ='text/JavaScript'>";
+    echo "window.alert(' $message ');";
+    echo "window.location.href='/demos/login'";
+    echo "</script>";
+}

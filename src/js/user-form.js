@@ -139,12 +139,57 @@ for (let i = 0; i < randWord.length; i++) {
         letters.push(randWord[i])
     }
 }
-capWord.innerHTML = letters.join(' ')
+if (capWord) {
+
+    capWord.innerHTML = letters.join(' ')
+}
 
 function checkCapcha() {
     const userCapcha = document.getElementById('user-cap').value
     return userCapcha === randLetter;
 }
+
+
+// sigin form pseudo :
+const pseudoChecked = document.querySelectorAll('.radio')
+const pseudoTextInput = document.getElementById('pseudo')
+const pseudoInputContainer = document.getElementById('pseudo-container')
+const radioCheck = document.querySelectorAll('#radio-input')
+
+document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        if (this.id === 'visibility3') {
+            pseudoInputContainer.classList.add('pseudo-input-display')
+            pseudoTextInput.classList.add('pseudo-input-display')
+            pseudoTextInput.disabled = false;
+            pseudoTextInput.required = true;
+        } else {
+            pseudoInputContainer.classList.remove('pseudo-input-display')
+            pseudoTextInput.classList.remove('pseudo-input-display')
+            pseudoTextInput.disabled = true;
+            pseudoTextInput.required = false;
+        }
+        
+    });
+});
+
+
+
+
+
+/*
+function checkPseudo() {
+    
+    for(let i = 0; i < pseudoChecked.length; i++) {
+        pseudoChecked[i].addEventListener('change', e => {
+            let value = e.target.id;
+            console.log(value);
+        })
+    }
+    
+
+}
+*/
 
 
 

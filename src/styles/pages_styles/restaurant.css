@@ -1,0 +1,196 @@
+@import url('https://fonts.cdnfonts.com/css/kapakana');
+
+
+
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    label {
+        display: flex;
+        gap: 1rem;
+        width: 20rem;
+        justify-content: right;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 4rem;
+}
+
+.svg_restaurant {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*
+#brand-panel {
+    fill: blueviolet;
+}
+*/
+
+
+
+#windows {
+    fill: rgb(170, 205, 236);
+}
+
+#reflect {
+    fill: rgb(227, 234, 240);;
+}
+/*
+#door-main-color {
+    fill: bisque;
+}
+
+
+#borders-moulures {
+    fill: chartreuse;
+}
+
+#moulures {
+    fill: rgb(67, 75, 60);
+}
+#door-second-color {
+    fill: rgb(101, 92, 80);
+}
+*/
+
+
+.restaurant-container {
+    border: solid 1px black;
+    h3 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.restaurant-sketch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+
+}
+
+
+
+#restaurant-select {
+    border: none;
+    background-color: white;
+}
+
+.restaurant-style-img {
+    border: solid 1px black;
+    width: 125px;
+    height: 66px;
+    padding: .4rem;
+    cursor: pointer;
+}
+
+.restaurant-style-img:hover, .activ {
+    outline: solid 2px orange;
+    border: solid 1px orange;
+}
+
+.restaurant-colorise {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1rem;
+    svg {
+        width: 400px;
+    }
+}
+
+.restaurant-texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1rem;
+    svg {
+        width: 400px;
+    }
+}
+
+.form-colors > fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1.2rem;
+    margin: 1rem;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+#rest-title {
+    fill: #000000;
+    stroke: #000000;
+    stroke-width: 0.2px;
+    text-anchor: middle;
+}
+
+.kapakana {
+    font-family: 'Kapakana', sans-serif;
+    font-size: 1.7rem;
+}
+
+.arial {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+}
+
+
+.display-colored-rest {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 1rem;
+        svg {
+            width: 800px;
+        }
+
+
+
+    }
+
+    fieldset {
+        width: 60vw;
+    }
+
+    .menu-fields {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        input, textarea {
+            width: 100%;
+            resize: none;
+        }
+
+        textarea {
+            height: 4rem;
+        }
+    }
+    
+

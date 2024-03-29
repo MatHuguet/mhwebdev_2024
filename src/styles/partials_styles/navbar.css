@@ -135,7 +135,7 @@ header {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: 1.6rem 3rem;
+    padding: 1.8rem 3rem;
     gap: 1rem;
   }
   .left {
@@ -273,7 +273,7 @@ header {
   }
 
   .social>.icons {
-    top: 7rem;
+    top: 8rem;
   } 
 
   .icon-img>img {

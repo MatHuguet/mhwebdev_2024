@@ -14,6 +14,7 @@ require 'src/classes/DatabaseInit.php';
 require 'src/classes/Database.php';
 require 'src/classes/Router.php';
 require 'src/classes/Users.php';
+require 'src/classes/Auth.php';
 
 $conf = $init['dev'];
 $sgbd = $init['dev_sgbd'];
