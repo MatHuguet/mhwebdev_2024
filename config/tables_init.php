@@ -13,37 +13,51 @@ return [
             `user_pseudo` VARCHAR(255)
           )",
 
+    'users_restaurants' => "CREATE TABLE if not exists `users_restaurants` (
+            `restaurant_id` VARCHAR(255) PRIMARY KEY,
+            `restaurant_type` INT NOT NULL,
+            `created_by` VARCHAR(255) NOT NULL,
+            `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (created_by) REFERENCES users(user_id) ON DELETE CASCADE
+          )",
+
     'menus'   => "CREATE TABLE if not exists `menus` (
             `menu_id` INT PRIMARY KEY AUTO_INCREMENT,
+            `restaurant_id` VARCHAR(255) NOT NULL,
+            `restaurant_name` VARCHAR(255) NOT NULL,
+            `welcome_text` TEXT NOT NULL,
             `brand_font` VARCHAR(100) NOT NULL,
-            `titles_font` VARCHAR(100) NOT NULL,
-            `texts_font` VARCHAR(100) NOT NULL
+            `brand_color` VARCHAR(100) NOT NULL,
+            FOREIGN KEY (restaurant_id) REFERENCES users_restaurants(restaurant_id) ON DELETE CASCADE
 
 
 )",
 
     'entrees'   => "CREATE TABLE if not exists `entrees` (
             `entree_id` INT PRIMARY KEY AUTO_INCREMENT,
-            `menu_id` INT,
+            `menu_id` INT NOT NULL,
             `entree_name` VARCHAR(255) NOT NULL,
-            `entree_desc` TEXT NOT NULL,
-            FOREIGN KEY (menu_id) REFERENCES menus(menu_id)
+            `entree_desc` TEXT,
+            `entree_number` VARCHAR(50) NOT NULL,
+            FOREIGN KEY (menu_id) REFERENCES menus(menu_id) ON DELETE CASCADE
           )",
 
     'plats'     => "CREATE TABLE if not exists `plats` (
             `plat_id` INT PRIMARY KEY AUTO_INCREMENT,
-            `menu_id` INT,
+            `menu_id` INT NOT NULL,
             `plat_name` VARCHAR(255) NOT NULL,
-            `plat_desc` TEXT NOT NULL,
-            FOREIGN KEY (menu_id) REFERENCES menus(menu_id)
+            `plat_desc` TEXT,
+            `plat_number` VARCHAR(50) NOT NULL,
+            FOREIGN KEY (menu_id) REFERENCES menus(menu_id) ON DELETE CASCADE
           )",
 
     'desserts'    => "CREATE TABLE if not exists `desserts` (
             `dessert_id` INT PRIMARY KEY AUTO_INCREMENT,
-            `menu_id` INT,
+            `menu_id` INT NOT NULL,
             `dessert_name` VARCHAR(255) NOT NULL,
-            `dessert_desc` TEXT NOT NULL,
-            FOREIGN KEY (menu_id) REFERENCES menus(menu_id)
+            `dessert_desc` TEXT,
+            `dessert_number` VARCHAR(50) NOT NULL,
+            FOREIGN KEY (menu_id) REFERENCES menus(menu_id) ON DELETE CASCADE
           )",
 
 
@@ -55,6 +69,7 @@ return [
 
     'restaurants_colors'    => "CREATE TABLE if not exists `restaurants_colors` (
             `restaurant_palette_id` INT PRIMARY KEY AUTO_INCREMENT,
+            `restaurant_id` VARCHAR(255) NOT NULL,
             `main_color` VARCHAR(7) NOT NULL,
             `second_color` VARCHAR(7) NOT NULL,
             `brand_color` VARCHAR(7) NOT NULL,
@@ -63,29 +78,28 @@ return [
             `door_color` VARCHAR(7) NOT NULL,
             `door_second_color` VARCHAR(7) NOT NULL,
             `poignee_color` VARCHAR(7) NOT NULL,
-            `name_font_color` VARCHAR(7) NOT NULL,
-            `welcome_text_color` VARCHAR(7) NOT NULL,
-            `menu_titles_colors` VARCHAR(7) NOT NULL,
-            `menu_texts_colors` VARCHAR(7) NOT NULL
+            FOREIGN KEY (restaurant_id) REFERENCES users_restaurants(restaurant_id) ON DELETE CASCADE
+
 )",
 
-    'users_restaurants' => "CREATE TABLE if not exists `users_restaurants` (
-            `restaurant_id` VARCHAR(255) PRIMARY KEY,
-            `restaurant_name` VARCHAR(255) NOT NULL,
-            `restaurant_type` INT,
-            `menu` INT,
-            `restaurant_colors` INT,
-            `created_by` VARCHAR(255),
-            `created_at` DATE NOT NULL,
-            `welcome_text` TEXT NOT NULL,
-            FOREIGN KEY (restaurant_type) REFERENCES restaurants_types(type_id),
-            FOREIGN KEY (menu) REFERENCES menus(menu_id),
-            FOREIGN KEY (restaurant_colors) REFERENCES restaurants_colors(restaurant_palette_id),
-            FOREIGN KEY (created_by) REFERENCES users(user_id)
-          )"
+
 
 
   ],
 
-  'sql_rows'  => [],
+  'sql_rows'  => [
+    'restaurant_types'  => "INSERT IGNORE INTO restaurants_types(type_id, type_name, type_img_url) VALUES (
+      1, 'traditionnel', '/public/images/restaurant/rest_0.png'
+    ),
+    (
+      2, 'oriental', '/public/images/restaurant/rest_1.png'
+      ),
+    (
+      3, 'little', '/public/images/restaurant/rest_2.png'
+      ),
+    (
+      4, 'corner', '/public/images/restaurant/rest_3.png'
+      )
+    "
+  ],
 ];

@@ -14,6 +14,12 @@ require 'src/classes/DatabaseInit.php';
 require 'src/classes/Database.php';
 require 'src/classes/Router.php';
 require 'src/classes/Users.php';
+require 'src/classes/Colors.php';
+require 'src/classes/Menus.php';
+require 'src/classes/Entree.php';
+require 'src/classes/Plat.php';
+require 'src/classes/Dessert.php';
+require 'src/classes/Restaurant.php';
 require 'src/classes/Auth.php';
 
 $conf = $init['dev'];

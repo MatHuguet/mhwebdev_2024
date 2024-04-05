@@ -1,7 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/kapakana');
 
 
-
+textarea {
+    resize: none;
+}
 
 .inputs {
     display: flex;
@@ -192,5 +194,15 @@
             height: 4rem;
         }
     }
+
+.delete-container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 1rem;
+padding: 2rem;
+margin: 2rem 0;
+}
     
 

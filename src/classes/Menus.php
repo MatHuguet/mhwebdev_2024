@@ -3,9 +3,12 @@
 class Menus
 {
 
+
+    private string $restaurant_id;
+    private string $restaurant_name;
+    private string $welcome_text;
     private string $brand_font;
-    private string $titles_font;
-    private string $texts_font;
+    private string $brand_color;
 
     private $dsn;
 
@@ -14,43 +17,68 @@ class Menus
         $this->dsn = $dsn;
     }
 
-    public function setFonts(string $brand_font, string $titles_font, string $texts_font): void
+    public function setMenu(array $brand): void
     {
-        $this->brand_font   = $brand_font;
-        $this->titles_font  = $titles_font;
-        $this->texts_font   = $texts_font;
+        $this->restaurant_id    = $brand['restaurant_id'];
+        $this->restaurant_name  = $brand['name'];
+        $this->welcome_text     = $brand['welcome'];
+        $this->brand_font       = $brand['brand_font'];
+        $this->brand_color      = $brand['brand_color'];
     }
 
-    public function getFontsInputs(): array
+    public function getMenuInputs(): array
     {
-        $fonts = [
+        return [
+            'restaurant_id' => $this->restaurant_id,
+            'name'          => $this->restaurant_name,
+            'welcome'       => $this->welcome_text,
             'brandfont'     => $this->brand_font,
-            'titlesfont'    => $this->titles_font,
-            'textsfont'     => $this->texts_font,
+            'brandcolor'    => $this->brand_color,
         ];
-
-        return $fonts;
     }
 
-    public function registerFonts(array $menuDatas): void
+    public function registerMenu(array $menuDatas): void
     {
-        $query = "INSERT INTO menus(brand_font, titles_font, texts_font) VALUES (
+        $query = "INSERT INTO menus(restaurant_id, restaurant_name, welcome_text, brand_font, brand_color) VALUES (
+            :restaurantid,
+            :name,
+            :welcome,
             :brandfont,
-            :titlesfont,
-            :textsfont
+            :brandcolor
         )";
         $conn = $this->dsn;
         $conn->query($query, [
-            'brandfont'  => $menuDatas['brandfont'],
-            'titlesfont' => $menuDatas['titlesfont'],
-            'textsfont'  => $menuDatas['textsfont'],
+            'restaurantid'  => $menuDatas['restaurant_id'],
+            'name'          => $menuDatas['name'],
+            'welcome'       => $menuDatas['welcome'],
+            'brandfont'     => $menuDatas['brandfont'],
+            'brandcolor'    => $menuDatas['brandcolor'],
         ]);
     }
 
-    public function getFonts($menuId)
+    public function updateMenu(array $menuDatas): void
     {
-        $query = "SELECT * FROM menus WHERE menu_id = :menuId";
+        $query = "UPDATE menus
+        SET restaurant_name = :name, 
+            welcome_text = :welcome, 
+            brand_font = :brandfont, 
+            brand_color = :brandcolor
+            WHERE restaurant_id = :restaurantid
+        ";
         $conn = $this->dsn;
-        return $conn->query($query, ['menuId' => $menuId]);
+        $conn->query($query, [
+            'restaurantid'  => $menuDatas['restaurant_id'],
+            'name'          => $menuDatas['name'],
+            'welcome'       => $menuDatas['welcome'],
+            'brandfont'     => $menuDatas['brandfont'],
+            'brandcolor'    => $menuDatas['brandcolor'],
+        ]);
+    }
+
+    public function getMenu($restaurantId)
+    {
+        $query = "SELECT * FROM menus WHERE restaurant_id = :restaurantId";
+        $conn = $this->dsn;
+        return $conn->query($query, ['restaurantId' => $restaurantId]);
     }
 }

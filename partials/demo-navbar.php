@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user'])) {
         ?>
             <li class="demos-nav-item"><a href="/">Retour à l'accueil</a></li>
         <?php
-        } elseif ($_SERVER['REQUEST_URI'] === "/demos/compte") {
+        } elseif ($_SERVER['REQUEST_URI'] === "/demos/compte" || $_SERVER['REQUEST_URI'] === "/demos/compte/parametres") {
         ?>
             <li class="demos-nav-item"><a href="/demos">Retour à la page démo</a></li>
         <?php
@@ -33,9 +33,30 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user'])) {
     <ul class="demos-connect">
         <?php
         if ($isConnected) {
+            if ($_SERVER['REQUEST_URI'] === "/demos/compte") {
         ?>
+
+            <li class="user-nav-item"><a href="/demos/logout">Se Déconnecter</a></li>
+            <li class="user-nav-item"><a href="/demos/compte/parametres">Paramètres de compte</a></li>
+<?php
+            } elseif ($_SERVER['REQUEST_URI'] === "/demos/compte/parametres") {
+?>
             <li class="user-nav-item"><a href="/demos/compte">Mon Compte</a></li>
             <li class="user-nav-item"><a href="/demos/logout">Se Déconnecter</a></li>
+
+<?php
+            } else {
+    ?>
+
+            <li class="user-nav-item"><a href="/demos/compte">Mon Compte</a></li>
+            <li class="user-nav-item"><a href="/demos/logout">Se Déconnecter</a></li>
+            <li class="user-nav-item"><a href="/demos/compte/parametres">Paramètres de compte</a></li>
+
+<?php
+}
+
+        ?>
+
 
         <?php
         } else {
@@ -45,6 +66,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user'])) {
             <li class="user-nav-item"><a href="/demos/signin">S'inscrire</a></li>
         <?php
         }
+
         ?>
     </ul>
 

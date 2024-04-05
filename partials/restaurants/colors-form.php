@@ -1,6 +1,7 @@
-<form action="/demos/compte/titre&menu" method="get" class="form-colors">
+<form action="/demos/compte/titre&menu" method="POST" class="form-colors">
     <fieldset>
-        <input type="text" name="restaurant_id" value="<?= $id ?>" hidden />
+        <input type="text" name="restaurant_id" value="<?= $restaurant_id ?>" hidden />
+        <input type="text" name="restaurant_type" value="<?= $restaurant_type ?>" hidden />
         <div class="input">
             <label for="maincolor">Couleur principale :
             </label>

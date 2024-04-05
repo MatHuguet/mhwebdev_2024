@@ -95,6 +95,98 @@ PAGE UTILISATEUR
             padding: .8rem 0;
         }
     }
+
+    .welcome-user {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 4rem 2rem 2rem 2rem;
+    }
+
+    /*
+    ======MENU DISPLAY================================
+    */
+
+    .display-userrest {
+        margin: 0 0 4rem 0;
+    }
+
+    .user-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 1rem 1rem 4rem;
+    }
+
+    .menu-list {
+        width: 100%;
+        list-style-type: disc;
+    }
+
+    .menu-item {
+        padding: 1rem 0 .4rem 0;
+    }
+
+/*
+    .menu-item {
+        list-style-type: disc;
+        border: solid 1px red;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+*/
+
+    /* DELETE PAGE */
+
+    .user-modify-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    width: 100%;
+    .btn-container {
+    margin: 1rem;
+}
+}
+
+    .user-edit-form {
+    display: flex;
+flex-direction: column;
+align-content: space-around;
+align-items: center;
+    width: 50%;
+padding: 2rem 0;
+}
+
+.user-edit-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+margin: .5rem 0;
+    input {
+    width: 18rem;
+}
+}
+
+.radio {
+    margin: .5rem 0;
+}
+
 }
 
 

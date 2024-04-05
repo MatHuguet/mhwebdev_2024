@@ -24,6 +24,11 @@ class Database
         }
     }
 
+    public function getPdo()
+    {
+        return $this->connect;
+    }
+
 
     public function query(string $query, array $param = []): array
     {

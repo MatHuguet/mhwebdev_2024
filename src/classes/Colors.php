@@ -2,6 +2,7 @@
 
 class Colors
 {
+    private string $restaurant_id;
     private string $main_color;
     private string $second_color;
     private string $brand;
@@ -10,10 +11,7 @@ class Colors
     private string $door;
     private string $door_second_color;
     private string $poignee;
-    private string $name_font_color;
-    private string $welcome_font_color;
-    private string $menu_titles_colors;
-    private string $menu_texts_colors;
+
 
     private $dsn;
 
@@ -22,25 +20,23 @@ class Colors
         $this->dsn = $dsn;
     }
 
-    public function setColors(string $main_color, string $second_color, string $brand, string $moulures, string $borders_moulures, string $door, string $door_second_color, string $poignee, string $name_font_color, string $welcome_font_color, $menu_titles_colors, $menu_texts_colors): void
+    public function setColors(array $restaurantColors): void
     {
-        $this->main_color           = $main_color;
-        $this->second_color         = $second_color;
-        $this->brand                = $brand;
-        $this->moulures             = $moulures;
-        $this->borders_moulures     = $borders_moulures;
-        $this->door                 = $door;
-        $this->door_second_color    = $door_second_color;
-        $this->poignee              = $poignee;
-        $this->name_font_color      = $name_font_color;
-        $this->welcome_font_color   = $welcome_font_color;
-        $this->menu_titles_colors   = $menu_titles_colors;
-        $this->menu_texts_colors   = $menu_texts_colors;
+        $this->restaurant_id        = $restaurantColors['restaurant_id'];
+        $this->main_color           = $restaurantColors['mainColor'];
+        $this->second_color         = $restaurantColors['secondColor'];
+        $this->brand                = $restaurantColors['brandColor'];
+        $this->moulures             = $restaurantColors['mouluresColor'];
+        $this->borders_moulures     = $restaurantColors['bordersMouluresColor'];
+        $this->door                 = $restaurantColors['doorColor'];
+        $this->door_second_color    = $restaurantColors['secondDoorColor'];
+        $this->poignee              = $restaurantColors['poigneeColor'];
     }
 
     public function registerColors(array $colorsDatas): void
     {
-        $query = "INSERT INTO restaurants_colors(main_color, second_color, brand_color, moulures_color, borders_moulures_color, door_color, door_second_color, poignee_color, name_font_color, welcome_text_color, menu_titles_colors, menu_texts_colors) VALUES (
+        $query = "INSERT INTO restaurants_colors(restaurant_id, main_color, second_color, brand_color, moulures_color, borders_moulures_color, door_color, door_second_color, poignee_color) VALUES (
+            :restaurantid,
             :maincolor,
             :secondcolor,
             :brand,
@@ -48,14 +44,11 @@ class Colors
             :bordersmoulures,
             :door,
             :doorsecondcolor,
-            :poignee,
-            :namefontcolor,
-            :welcomefontcolor,
-            :menutitlescolors,
-            :menutextscolors,
+            :poignee
         )";
         $conn = $this->dsn;
         $conn->query($query, [
+            'restaurantid'      => $colorsDatas['restaurantId'],
             'maincolor'         => $colorsDatas['mainColor'],
             'secondcolor'       => $colorsDatas['secondColor'],
             'brand'             => $colorsDatas['brand'],
@@ -64,16 +57,13 @@ class Colors
             'door'              => $colorsDatas['door'],
             'doorsecondcolor'   => $colorsDatas['doorSecondColor'],
             'poignee'           => $colorsDatas['poignee'],
-            'namefontcolor'     => $colorsDatas['nameFontColor'],
-            'welcomefontcolor'  => $colorsDatas['welcomeFontColor'],
-            'menutitlescolors'  => $colorsDatas['menuTitlesColors'],
-            'menutextscolors'   => $colorsDatas['menuTextsColors'],
         ]);
     }
 
     public function getColorsInputs(): array
     {
         $colorsDatas = [
+            'restaurantId'      => $this->restaurant_id,
             'mainColor'         => $this->main_color,
             'secondColor'       => $this->second_color,
             'brand'             => $this->brand,
@@ -82,18 +72,41 @@ class Colors
             'door'              => $this->door,
             'doorSecondColor'   => $this->door_second_color,
             'poignee'           => $this->poignee,
-            'nameFontColor'     => $this->name_font_color,
-            'welcomeTextColor'  => $this->welcome_font_color,
-            'menuTitlesColors'  => $this->menu_titles_colors,
-            'menuTextsColors'   => $this->menu_texts_colors,
         ];
         return $colorsDatas;
     }
 
-    public function getColors($colorsId): array
+    public function getColors($restId): array
     {
-        $query = "SELECT * FROM restaurants_colors WHERE restaurant_palette_id = :restaurantColors";
+        $query = "SELECT * FROM restaurants_colors WHERE restaurant_id = :restid";
         $conn = $this->dsn;
-        return $conn->query($query, ['restaurantColors' => $colorsId]);
+        return $conn->query($query, ['restid' => $restId]);
+    }
+
+    public function updateColors($colorsDatas)
+    {
+        $query = "UPDATE restaurants_colors 
+        SET main_color              = :maincolor, 
+            second_color            = :secondcolor, 
+            brand_color             = :brand, 
+            moulures_color          = :moulures, 
+            borders_moulures_color  = :bordersmoulures, 
+            door_color              = :door, 
+            door_second_color       = :doorsecondcolor, 
+            poignee_color           = :poignee
+            WHERE restaurant_id = :restaurantid
+        ";
+        $conn = $this->dsn;
+        $conn->query($query, [
+            'restaurantid'      => $colorsDatas['restaurantId'],
+            'maincolor'         => $colorsDatas['mainColor'],
+            'secondcolor'       => $colorsDatas['secondColor'],
+            'brand'             => $colorsDatas['brand'],
+            'moulures'          => $colorsDatas['moulures'],
+            'bordersmoulures'   => $colorsDatas['bordersMoulures'],
+            'door'              => $colorsDatas['door'],
+            'doorsecondcolor'   => $colorsDatas['doorSecondColor'],
+            'poignee'           => $colorsDatas['poignee'],
+        ]);
     }
 }

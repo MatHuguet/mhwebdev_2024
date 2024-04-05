@@ -13,7 +13,7 @@ class Auth
     {
     }
 
-    public function logout($session)
+    public function logout($session, $isRedirect = true)
     {
         $session = array();
 
@@ -35,10 +35,13 @@ class Auth
         // Finalement, détruire la session.
         session_destroy();
 
-        newalert('Déconnexion réussie !');
+        if ($isRedirect) {
+
+            newalert('Déconnexion réussie !');
+            exit;
+        }
 
         // Rediriger vers la page de connexion.
         //header('Location: /demos/login');
-        exit;
     }
 }

@@ -12,6 +12,9 @@ return [
     '/demos/compte'             => 'Controllers/userpage.php',
     '/demos/compte/restaurant'  => 'Controllers/restaurant.php',
     '/demos/compte/titre&menu'  => 'Controllers/restaurantTitreMenu.php',
+    '/demos/edit'               => 'Controllers/edit.php',
+    '/demos/compte/parametres'  => 'Controllers/params.php',
+    '/demos/compte/delete'      => 'Controllers/delete.php',
 
     // get the uri :
     'uri'                       => $uri = parse_url($_SERVER['REQUEST_URI'])['path'],

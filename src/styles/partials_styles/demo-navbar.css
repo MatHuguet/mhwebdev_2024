@@ -2,12 +2,12 @@
     width: 100%;
     position: sticky;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     top: 0;
     background-color: white;
     margin: 0;
-    padding: 2rem 0;
+    padding: 2rem;
     margin-top: 2rem;
     box-shadow: 2px 2px 2px rgb(177, 177, 177);
 }

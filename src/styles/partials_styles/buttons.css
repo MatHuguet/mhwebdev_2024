@@ -12,6 +12,20 @@
   border: solid 1px black;
 }
 
+.submit-btn-white {
+  background-color: rgb(255, 255, 255);
+  color: orange;
+  font-weight: bold;
+  border: solid 2px orange;
+}
+
+.submit-btn-white:hover {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border: solid 1px rgb(199, 129, 0);
+}
+
 .submit-btn {
   background-color: darkorange;
   border: solid 2px orange;
@@ -22,4 +36,36 @@
   background-color: white;
   border: 2px solid orange;
   color: black;
+}
+
+.btn-alert {
+  background-color: red;
+  border: solid 2px red;
+  color: white;
+}
+
+.btn-alert:hover {
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+  font-weight: bold;
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn-l {
+  width: 12rem;
+  height: 2.5rem;
+}
+
+.btn-xxl {
+  width: 14rem;
+  height: 4rem;
 }

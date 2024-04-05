@@ -31,15 +31,20 @@ class Users
         $this->isPseudo         = $sanitizedUserDatas['isPseudo'];
         $this->isAnonyme        = $sanitizedUserDatas['isAnonyme'];
         $this->pseudo           = $sanitizedUserDatas['pseudo'];
-        /*
-        $this->firstname        = strtolower($firstname);
-        $this->lastname         = strtolower($lastname);
-        $this->email            = $email;
-        $this->password         = password_hash($password, PASSWORD_BCRYPT);
-        $this->isPseudo         = $isPseudo;
-        $this->isAnonyme        = $isAnonyme;
-        $this->pseudo           = $pseudo;
-        */
+    }
+
+        public function initUpdateUser(array $sanitizedUserDatas): void
+    {
+        // Update edited datas :
+        $this->email            = $sanitizedUserDatas['email'];
+        if (!empty($sanitizedUserDatas['password'])) {
+        $this->password         = password_hash($sanitizedUserDatas['password'], PASSWORD_BCRYPT);
+        } else {
+        $this->password         = $sanitizedUserDatas['password'];
+        }
+        $this->isAnonyme        = $sanitizedUserDatas['isAnonyme'];
+        $this->isPseudo         = $sanitizedUserDatas['isPseudo'];
+        $this->pseudo           = $sanitizedUserDatas['pseudo'];
     }
 
     public function register(array $datas)
@@ -80,6 +85,17 @@ class Users
 
     public function getUserInputs(): array
     {
+        $userDatas = [];
+        if (empty($this->user_id)) {
+        $userDatas = [
+            'email'     => $this->email,
+            'password'  => $this->password,
+            'isPseudo'  => $this->isPseudo,
+            'isAnonyme' => $this->isAnonyme,
+            'pseudo'    => $this->pseudo,
+        ];
+        } else {
+
         $userDatas = [
             'id'        => $this->user_id,
             'firstname' => $this->firstname,
@@ -90,6 +106,7 @@ class Users
             'isAnonyme' => $this->isAnonyme,
             'pseudo'    => $this->pseudo,
         ];
+        }
         return $userDatas;
     }
 
@@ -113,4 +130,53 @@ class Users
         $conn = $this->dsn;
         return $conn->query($query);
     }
+
+    public function updateUser($userId, array $userNewDatas) {
+    if (empty($userNewDatas['password'])) {
+        $query = "UPDATE users
+            SET user_email      = :usermail,
+                is_pseudo       = :ispseudo,
+                is_anonyme      = :isanonyme,
+                user_pseudo     = :pseudo
+            WHERE user_id       = :userid
+    ";
+    $conn = $this->dsn;
+    return $conn->query($query, [
+            'usermail'      => $userNewDatas['email'],
+            'ispseudo'      => $userNewDatas['isPseudo'],
+            'isanonyme'     => $userNewDatas['isAnonyme'],
+            'pseudo'        => $userNewDatas['pseudo'],
+            'userid'        => $userId
+        ]);
+    } else {
+    $query = "UPDATE users
+            SET user_email      = :usermail,
+                user_password   = :userpassword,
+                is_pseudo       = :ispseudo,
+                is_anonyme      = :isanonyme,
+                user_pseudo     = :pseudo
+            WHERE user_id       = :userid
+    ";
+    $conn = $this->dsn;
+    return $conn->query($query, [
+            'usermail'      => $userNewDatas['email'],
+            'userpassword'  => $userNewDatas['password'],
+            'ispseudo'      => $userNewDatas['isPseudo'],
+            'isanonyme'     => $userNewDatas['isAnonyme'],
+            'pseudo'        => $userNewDatas['pseudo'],
+            'userid'        => $userId
+        ]);
+    }
+}
+
+    public function deleteUser($userId) {
+
+    $query = "DELETE FROM users WHERE user_id = :id";
+    $conn = $this->dsn;
+    $conn->query($query, [
+                    'id' => $userId
+                ]);
+
+}
+
 }

@@ -180,7 +180,7 @@ let entree2Desc = document.getElementById('entree2-desc')
 
 let entree3Title = document.getElementById('entree3')
 let entree3Desc = document.getElementById('entree3-desc') 
-
+/*
 if (entree2Title) {
     entree2Title.setAttribute('disabled', true)
 }
@@ -193,7 +193,7 @@ if (entree3Title) {
 if (entree3Desc) {
     entree3Desc.setAttribute('disabled', true)
 }
-
+*/
 
 function getEntree1() {
     const entree1Title = document.getElementById('entree1').value.length
@@ -221,7 +221,7 @@ function checkEntreeFields() {
     let entree1 = getEntree1()
     let entree2 = getEntree2()
 
-
+/*
     if (entree1) {
         entree2Title.removeAttribute('disabled')
         entree2Desc.removeAttribute('disabled')
@@ -231,6 +231,7 @@ function checkEntreeFields() {
             entree3Desc.removeAttribute('disabled')
         }
     }
+    */
 }
 
 // PLATS
@@ -243,7 +244,7 @@ let plat2Desc = document.getElementById('plat2-desc')
 
 let plat3Title = document.getElementById('plat3')
 let plat3Desc = document.getElementById('plat3-desc') 
-
+/*
 if (plat2Title) {
 
     plat2Title.setAttribute('disabled', true)
@@ -262,7 +263,7 @@ if (plat3Desc) {
     plat3Desc.setAttribute('disabled', true)
 
 }
-
+*/
 function getPlat1() {
     const plat1Title = document.getElementById('plat1').value.length
     const plat1Desc = document.getElementById('plat1-desc').value.length
@@ -289,7 +290,7 @@ function checkPlatFields() {
     let plat1 = getPlat1()
     let plat2 = getPlat2()
 
-
+/*
     if (plat1) {
         plat2Title.removeAttribute('disabled')
         plat2Desc.removeAttribute('disabled')
@@ -299,6 +300,7 @@ function checkPlatFields() {
             plat3Desc.removeAttribute('disabled')
         }
     }
+    */
 }
 
 // DESSERTS
@@ -311,7 +313,7 @@ let dessert2Desc = document.getElementById('dessert2-desc')
 
 let dessert3Title = document.getElementById('dessert3')
 let dessert3Desc = document.getElementById('dessert3-desc') 
-
+/*
 if (dessert2Title) {
     dessert2Title.setAttribute('disabled', true)
 
@@ -329,7 +331,7 @@ if (dessert3Desc) {
     dessert3Desc.setAttribute('disabled', true)
 
 }
-
+*/
 function getDessert1() {
     const dessert1Title = document.getElementById('dessert1').value.length
     const dessert1Desc = document.getElementById('dessert1-desc').value.length
@@ -356,7 +358,7 @@ function checkDessertFields() {
     let dessert1 = getDessert1()
     let dessert2 = getDessert2()
 
-
+/*
     if (dessert1) {
         dessert2Title.removeAttribute('disabled')
         dessert2Desc.removeAttribute('disabled')
@@ -366,6 +368,7 @@ function checkDessertFields() {
             dessert3Desc.removeAttribute('disabled')
         }
     }
+    */
 }
 
 

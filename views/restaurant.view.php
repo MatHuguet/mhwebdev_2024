@@ -4,6 +4,17 @@ global $dsn;
 
 $user = new Users($dsn);
 $userid = '';
+
+// SECURITY :
+/*
+
+Check if a restaurant exists :
+    true : get the id to throw to the next page
+    //!!! IF THE ID CHANGE
+
+*/
+
+
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['user'])) {
     header('Location: /demos/login');
@@ -11,10 +22,20 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['user'])) {
 } else {
     $userid = $_SESSION['user_id'];
     $userDatas = $user->getUser($userid);
+    // SECURITY :
+    /*
+TODO:
+Check if a restaurant exists :
+    true : get the id to throw to the next page
+    //!!! IF THE ID CHANGE
+
+*/
+    $restaurant_id = uniqid();
 }
 
 // get restaurant id after user choice
 $id = filter_input(INPUT_GET, "style", FILTER_VALIDATE_INT);
+$restaurant_type = intval($id);
 
 ?>
 
